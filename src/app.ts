@@ -10,14 +10,10 @@ import { buildSchema } from 'type-graphql';
 import { Container } from 'typedi';
 import { createConnection, ConnectionOptions } from 'typeorm';
 
-import Todo from './entities/Todo';
-import User from './entities/User';
-import AuthResolver from './graphql/resolvers/auth.resolver';
-import TodoResolver from './graphql/resolvers/todo.resolver';
-import { RequestWithUser } from './interfaces/requestWithUser.interface';
-import authChecker from './middlewares/auth.middleware';
-import logger from './utils/logger';
-import redis from './utils/redis';
+import { Todo, User } from './entities';
+import { AuthResolver, TodoResolver, UserResolver } from './graphql/resolvers';
+import { RequestWithUser } from './interfaces';
+import { authChecker, logger, redis } from './utils';
 
 class App {
   public app: express.Application;
@@ -26,10 +22,10 @@ class App {
     this.app = express();
 
     this.connectToTheDatabase();
-    // this.createRedisClient();
+    this.createRedisClient();
     this.initializeMiddlewares();
     this.initializeGraphQLServer();
-    // this.initializeNotFoundRoute();
+    this.initializeNotFoundRoute();
   }
 
   public listen() {
@@ -49,21 +45,22 @@ class App {
     this.app.use(morgan('dev'));
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
-    // TODO: See how origin can be set for production.
-    this.app.use(cors({ origin: 'http://localhost:3000' }));
+    this.app.use(cors());
     this.app.use(lusca.xframe('SAMEORIGIN'));
     this.app.use(lusca.xssProtection(true));
   }
 
   private initializeNotFoundRoute() {
-    this.app.get('/*', function(req, res) {
-      res.status(404).send('<h3 style="text-align: center;">Nice try!</h3>');
+    this.app.use(/^(?!\/api\/?$)/, function(req, res) {
+      res
+        .status(404)
+        .send('<h3 style="text-align: center;">Not found! Nice try btw!</h3>');
     });
   }
 
   private async initializeGraphQLServer() {
     const schema = await buildSchema({
-      resolvers: [AuthResolver, TodoResolver],
+      resolvers: [AuthResolver, TodoResolver, UserResolver],
       container: Container,
       authChecker,
     });
@@ -79,8 +76,6 @@ class App {
         return context;
       },
     });
-
-    // this.app.use('/api', authMiddleware);
 
     apolloServer.applyMiddleware({ app: this.app, path: '/api' });
   }

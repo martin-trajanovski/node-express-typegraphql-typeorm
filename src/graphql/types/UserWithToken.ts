@@ -1,6 +1,6 @@
 import { ObjectType, Field } from 'type-graphql';
 
-import User from '@src/entities/User';
+import { User } from '@src/entities';
 
 @ObjectType()
 class UserWithToken extends User {

@@ -1,6 +1,6 @@
 import { createClient, RedisClient, RedisError } from 'redis';
 
-import logger from './logger';
+import { logger } from '.';
 
 class Redis {
   private client: RedisClient;

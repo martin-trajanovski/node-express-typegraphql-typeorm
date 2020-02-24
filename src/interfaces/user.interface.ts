@@ -1,8 +1,9 @@
-export interface User {
+import { Roles } from '@src/graphql/types/roles.enum';
+
+export interface UserInterface {
   id: string;
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
-  refreshToken: string;
+  roles: Roles[];
 }

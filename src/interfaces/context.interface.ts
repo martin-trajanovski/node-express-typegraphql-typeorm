@@ -1,8 +1,8 @@
 import { Request } from 'express';
 
-import { User } from './user.interface';
+import { UserInterface } from '.';
 
 export interface Context {
   req: Request;
-  user: User;
+  user: UserInterface;
 }

@@ -53,8 +53,8 @@ class App {
   private initializeNotFoundRoute() {
     this.app.use(/^(?!\/api\/?$)/, function(req, res) {
       res
-        .status(404)
-        .send('<h3 style="text-align: center;">Not found! Nice try btw!</h3>');
+        .status(200)
+        .send('<h2 style="text-align: center;">Not found! Nice try btw!</h2>');
     });
   }
 
@@ -102,7 +102,11 @@ class App {
       logging: false,
     } as ConnectionOptions;
 
-    await createConnection(connectionOptions);
+    try {
+      await createConnection(connectionOptions);
+    } catch (error) {
+      logger.error(`Database connection error: ${error}`);
+    }
   }
 
   private createRedisClient() {

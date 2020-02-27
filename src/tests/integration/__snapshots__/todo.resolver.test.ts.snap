@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test todos CRUD When we try to read the todos, it should get all todos for specific user in deault order 1`] = `
+Array [
+  Object {
+    "completed": false,
+    "id": "22de9fbd-f2ed-46d7-8a21-9f1f5a231a80",
+    "title": "Test todo 3",
+  },
+  Object {
+    "completed": false,
+    "id": "bdff5622-82d8-4e79-90f2-8470ee5fcf2f",
+    "title": "Test todo 4",
+  },
+]
+`;

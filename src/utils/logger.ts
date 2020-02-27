@@ -1,7 +1,6 @@
 import { createLogger, format, transports } from 'winston';
 const { combine, timestamp, label, colorize, printf, splat } = format;
 
-// TODO: Move this to middleware folder.
 const myFormat = printf(info => {
   return `${info.timestamp} ${info.label} ${info.level}: ${info.message}`;
 });

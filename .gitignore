@@ -39,7 +39,8 @@ npm-debug.log
 yarn-error.log
 .vscode
 *.log
-.env*
+.env
+.env.test
 coverage
 
 # BUCK

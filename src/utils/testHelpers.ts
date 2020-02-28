@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-export const apiCall = async (query: string, token?: string | null) => {
+export const apiCall = async (
+  query: string,
+  token?: string | null,
+  variables = {}
+) => {
   const config = {
     headers: {},
   };
@@ -11,16 +15,12 @@ export const apiCall = async (query: string, token?: string | null) => {
     };
   }
 
-  // console.log(query);
-
   // TODO: Maybe later the API url should be formed from env settings but for now it is ok.
   const response = await axios.post(
     'http://localhost:3002/api',
-    { query },
+    { query, variables },
     config
   );
-
-  // console.log(response.data);
 
   return response.data;
 };

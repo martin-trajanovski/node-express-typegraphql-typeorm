@@ -10,6 +10,7 @@
     "watch-node": "nodemon build/server.js",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn watch-node\"",
     "test": "jest --runInBand --watchAll ./src/tests",
+    "start-and-test": "env NODE_ENV=test server-test 3002",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "lint": "tsc --noEmit && eslint . --ext .js,.ts",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.10.1",
+    "axios": "^0.19.2",
     "bcrypt": "3.0.7",
     "body-parser": "^1.19.0",
     "chalk": "2.4.1",
@@ -46,6 +48,7 @@
     "pg": "^7.18.1",
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
+    "start-server-and-test": "^1.10.8",
     "type-graphql": "^0.17.6",
     "typedi": "^0.8.0",
     "typeorm": "^0.2.22",

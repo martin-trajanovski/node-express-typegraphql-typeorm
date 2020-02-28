@@ -1,14 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test todos CRUD When we try to read the todos, it should get all todos for specific user in deault order 1`] = `
+exports[`Test todos CRUD When we try to read the all todos with ADMIN role, it should match the snapshot 1`] = `
 Array [
   Object {
     "completed": false,
+    "createdBy": Object {
+      "firstName": "Martin",
+      "id": "a46bec40-a25c-4c1a-b976-2c72c5cf9a5b",
+      "roles": Array [
+        "ADMIN",
+      ],
+    },
+    "id": "a12457a7-4d07-40f5-90a4-861954f122de",
+    "title": "Test todo 1",
+  },
+  Object {
+    "completed": false,
+    "createdBy": Object {
+      "firstName": "Martin",
+      "id": "a46bec40-a25c-4c1a-b976-2c72c5cf9a5b",
+      "roles": Array [
+        "ADMIN",
+      ],
+    },
+    "id": "57c60882-6696-4eae-b391-a44615615e6c",
+    "title": "Test todo 2",
+  },
+  Object {
+    "completed": false,
+    "createdBy": Object {
+      "firstName": "Test",
+      "id": "2d17d0f0-68eb-40b2-9b30-0904048562ed",
+      "roles": Array [
+        "USER",
+      ],
+    },
     "id": "22de9fbd-f2ed-46d7-8a21-9f1f5a231a80",
     "title": "Test todo 3",
   },
   Object {
     "completed": false,
+    "createdBy": Object {
+      "firstName": "Test",
+      "id": "2d17d0f0-68eb-40b2-9b30-0904048562ed",
+      "roles": Array [
+        "USER",
+      ],
+    },
+    "id": "bdff5622-82d8-4e79-90f2-8470ee5fcf2f",
+    "title": "Test todo 4",
+  },
+]
+`;
+
+exports[`Test todos CRUD When we try to read the todos, it should get all todos for specific user in deault order 1`] = `
+Array [
+  Object {
+    "completed": false,
+    "createdBy": Object {
+      "firstName": "Test",
+      "id": "2d17d0f0-68eb-40b2-9b30-0904048562ed",
+      "roles": Array [
+        "USER",
+      ],
+    },
+    "id": "22de9fbd-f2ed-46d7-8a21-9f1f5a231a80",
+    "title": "Test todo 3",
+  },
+  Object {
+    "completed": false,
+    "createdBy": Object {
+      "firstName": "Test",
+      "id": "2d17d0f0-68eb-40b2-9b30-0904048562ed",
+      "roles": Array [
+        "USER",
+      ],
+    },
     "id": "bdff5622-82d8-4e79-90f2-8470ee5fcf2f",
     "title": "Test todo 4",
   },

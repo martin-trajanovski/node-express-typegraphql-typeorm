@@ -38,7 +38,7 @@
     "dotenv": "^8.2.0",
     "envalid": "^4.2.2",
     "express": "^4.17.1",
-    "express-jwt": "^5.3.0",
+    "express-jwt": "^6.0.0",
     "graphql": "^14.6.0",
     "jsonwebtoken": "^8.5.1",
     "lusca": "^1.6.1",
